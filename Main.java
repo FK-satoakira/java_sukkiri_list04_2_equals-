@@ -1,69 +1,49 @@
 package practice;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-class Monster{
-	private String name;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public boolean equals(Object o) {
-		if(this==o)return true;
-		if(o==null)return false;
-		if(!(o instanceof Monster))return false;
-		Monster h = (Monster) o;
-		if(!(h.name.trim().equals(this.name.trim())))return false;
-		return true;
-	}
-	public int hashCode() {
-		int r = 13;
-		int rr = 17;
-		r = name.hashCode()*r*rr;
-		return r;
-	}
-}
 public class Main {
+
     public static void main(String[] args) {
-    	Set<Object> list = new HashSet<>();
+    	List<Hero> heros = new ArrayList<>();
     	Hero h1 = new Hero();
-    	h1.setName("TARO");
-    	Monster m = new Monster();
-    	m.setName("TARO");
-    	list.add(h1);
-    	list.add(m);
-    	System.out.println("list.size() = "+list.size());
-
-    	System.out.println("m.hashCode()="+m.hashCode());
-    	System.out.println("h1.hashCode()="+h1.hashCode());
-
-    	Iterator<Object> it = list.iterator();
-    	while(it.hasNext()) {
-    		String name ="";
-//    		String mn;
-
-    		Object e = it.next();
-    		if(e instanceof Hero) {
-    			Hero hr = (Hero)e;
-    			name = hr.getName();
-//    			if(name.equals("TARO")) {
-//    				list.remove(hr);
-//    			}
-    		}
-    		if(e instanceof Monster) {
-    			Monster mr = (Monster)e;
-    			name = mr.getName();
-//    			if(name.equals("TARO")) {
-//    				list.remove(mr);
-//    			}
-    		}
-    		System.out.println("test");
-    		System.out.println(list);
-    	}
-//    	ifがあるとなぜダメなのかhashsetを勉強する必要がある
+    	Sword s = new Sword();
+    	s.setName("FIRE");
+    	h1.setName("勇者");
+    	h1.setHp(100);
+    	h1.setSword(s);
+    	Hero h2 = h1.clone();
+//    	Hero h2 = h1
+    	System.out.println("h1 = "+h1);
+    	System.out.println("h2 = "+h2);
+    	heros.add(h1);
+    	heros.add(h2);
+//    	h1.setName("YUSHA");
+//    	h2.setName("正義");
+    	h1.setHp(200);
+    	h2.setHp(400);
+    	System.out.println("h1 = "+h1);
+    	System.out.println("h2 = "+h2);
+    	h1.getSword().setName("ice");
+    	for (int i = 0; i < 2; i++) {
+//    		Hero h2 = h1.clone();
+//    		heros.add(h2);
+//    		String str = "";
+//    		for (int j = 0; j < 10; j++) {
+//    			Random r = new Random();
+//    			int a = r.nextInt(26)+97;
+//    			char s = (char)a;
+//    			str+=s;
+//    		}
+//    		System.out.println(str);
+    	System.out.println(heros.get(i).getSword());
+		}
+    	System.out.println(h1);
+    	System.out.println(h2);
     }
+//    nameを変える→     アドレス変わる
+//    hpを変える→	           アドレス不変
+//    swordのname変える→アドレス不変。sword自身のアドレスも不変。h1とh2のswordが同名であっても初めから違っていたのは意外だった。
+
 }
