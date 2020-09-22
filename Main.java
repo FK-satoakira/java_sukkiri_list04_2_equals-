@@ -45,5 +45,6 @@ public class Main {
 //    nameを変える→     アドレス変わる
 //    hpを変える→	           アドレス不変
 //    swordのname変える→アドレス不変。sword自身のアドレスも不変。h1とh2のswordが同名であっても初めから違っていたのは意外だった。
+// swordを深いコピーにするには、Swordクラスにclone()を実装する必要がある。
 
 }
